@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DTC Meter Reading</title>
+    </head>
+    <body>
+        <h2>Enter Reading data</h2>
+
+        <div>
+            
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    </head>
+    <body>
+        <form method="post" action="dtcmeterreadingsubmit">
+            <select name="ss_code" id="ss_code" class="form-control">
+                <option value="">Select substation code</option>
+                <% for(var count = 0; count < ss_code.length; count++) { %>
+    
+                <option value="<%= ss_code[count].ss_code %>"><%= ss_code[count].ss_code %></option>
+    
+                <% } %>
+            </select>
+            <select name="feed_code" id="feed_code" class="form-control">
+                <option value="">Select feeder</option>
+            </select>
+            <select name="dtc_code" id="dtc_code" class="form-control">
+                <option value="">Select DTC</option>
+            </select>
+        <input type="number" placeholder="reading" id="reading" name="reading"><br><br>
+    
+        <button type="submit">Submit</button>
+          
+           
+    
+
+        
+     
+
+
+</form>
+
+    </body>
+</html>
+<script>
+   
+
+    function _(element)
+    {
+        return document.getElementById(element);
+    }
+    function fetch_data(parent_element, child_element, type)
+{
+fetch('/get_data?type='+type+'&parent_value='+parent_element.value+'').then(function(response){
+    return response.json();
+}).then(function(responseData){
+
+    var html = '';
+
+    if(type == 'load_feeder')
+    {
+        html = '<option value="">Select feeder</option>';
+    }
+
+    if(type == 'load_dtc')
+        {
+            html = '<option value="">Select dtc</option>';
+        }
+
+    for(var count = 0; count < responseData.length; count++)
+    {
+        html += '<option value="'+responseData[count]+'">'+responseData[count]+'</option>';
+    }
+
+    child_element.innerHTML = html;
+});
+}
+
+_('ss_code').onchange = function(){
+
+fetch_data(_('ss_code'), _('feed_code'), 'load_feeder');
+
+};
+
+_('feed_code').onchange = function(){
+
+fetch_data(_('feed_code'), _('dtc_code'), 'load_dtc');
+
+};
+
+
+    
+    </script>

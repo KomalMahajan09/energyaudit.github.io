@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<style>
+  h1
+  {
+            text-align:center;
+            padding :20px;
+            color :rebeccapurple;
+  }
+  body
+  {
+           background-image: url(C:\Users\Komal\Desktop\Javascript\nodeapp\images);
+            
+        }
+        .textbox{
+                margin-inline-start: 50;
+            }
+            .form-container{
+             
+              border: 5px solid;
+              margin: auto;
+               width: 25%;
+              padding: 5px;
+              color:olive
+
+            }
+            .submit{
+              width:25%;
+              color:olive;
+              margin:auto;
+              padding:10px;
+              border:5px solid;
+
+            }
+            .login{
+              width:25%;
+              color:olive;
+              margin:auto;
+              padding:10px;
+              border:5px solid;
+            }
+</style>
+</head>
+<body>
+<div class="registration-form">
+
+<p> <%=(typeof alertMsg!='undefined')? alertMsg:''%></p>
+<form method="post" action="register">
+  <h1>Register Here </h1>
+<div class="form-container">
+  
+   <input type="text" placeholder="First Name" id="first_name"name="first_name" required><br><br>
+   <input type="text" placeholder="Last Name " id="last_name" name="last_name" required><br>
+</div>
+<div class="form-container">
+  <input type="password" placeholder="Password" id="password" name="password"><br><br>
+  <input type="password" placeholder="Confirm Password" id="confirm_password" name="confirm_password" ><br>
+</div>
+<div class="form-container">  
+   <input type="email" placeholder="Email Address" id="email_address" name="email_address" required><br>
+   <br><input type="radio" value="male" name="gender" id="gender" required><label>Male</label><br>
+       <input type="radio" value="female" name="gender"  id="gender" required><label>Female</label><br>
+  
+</div>
+<div class="submit">
+<button type="submit">Register Now</button>
+</div>
+<div class="login">
+<a href="/login">Login</a>
+</div>
+</form>
+</div>
+
+</body>
+</html>

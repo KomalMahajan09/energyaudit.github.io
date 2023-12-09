@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Feeder Meter Reading</title>
+    </head>
+    <body>
+        <h2>Enter Reading data</h2>
+
+        <div>
+            
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    </head>
+    <body>
+        <form method="post" action="feedermeterreadingsubmit">  <select name="ss_code" id="ss_code" class="form-control">
+            <option value="">Select substation code</option>
+            <% for(var count = 0; count < ss_code.length; count++) { %>
+
+            <option value="<%= ss_code[count].ss_code %>"><%= ss_code[count].ss_code %></option>
+
+            <% } %>
+        </select>
+        <select name="feed_code" id="feed_code" class="form-control">
+            <option value="">Select feeder</option>
+        </select>
+        <label for="mm">Choose a Month:</label>
+
+<select name="mm" id="mm">
+  <option value="01">01</option>
+  <option value="02">02</option>
+  <option value="03">03</option>
+  <option value="04">04</option>
+  <option value="05">05</option>
+  <option value="06">06</option>
+  <option value="07">07</option>
+  <option value="08">08</option>
+  <option value="09">09</option>
+  <option value="10">10</option>
+  <option value="11">11</option>
+  <option value="12">12</option>
+</select>
+<select name="yy" id="yy">
+    <option value="2023">2023</option>
+  </select>
+
+        <input type="number" placeholder="reading" id="reading" name="reading"><br><br>
+        <select name="max" id="max" class="form-control">
+            <option value="">Select max</option>
+            <% for(var count = 0; count < max.length; count++) { %>
+
+            <option value="<%= max[count].max %>"><%= max[count].max %></option>
+
+            <% } %>
+        </select>
+        
+
+    
+        <button type="submit">Submit</button>
+          
+           
+    
+
+        
+     
+
+
+</form>
+
+    </body>
+</html>
+<script>
+   
+
+    function _(element)
+    {
+        return document.getElementById(element);
+    }
+    function fetch_data(parent_element, child_element, type)
+{
+fetch('/get_data?type='+type+'&parent_value='+parent_element.value+'').then(function(response){
+    return response.json();
+}).then(function(responseData){
+
+    var html = '';
+
+    if(type == 'load_feeder')
+    {
+        html = '<option value="">Select feeder</option>';
+    }
+
+   
+
+    for(var count = 0; count < responseData.length; count++)
+    {
+        html += '<option value="'+responseData[count]+'">'+responseData[count]+'</option>';
+    }
+
+    child_element.innerHTML = html;
+});
+}
+
+_('ss_code').onchange = function(){
+
+fetch_data(_('ss_code'), _('feed_code'), 'load_feeder');
+
+};
+
+
+
+
+    
+    </script>

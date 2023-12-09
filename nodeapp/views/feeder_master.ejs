@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" action="feedersubmit">
+        <input type="number" placeholder="feeder_code" id="feed_code" name="feed_code"><br><br>
+        <input type="text" placeholder="feeder_name" id="feed_name" name="feed_name"><br><br>
+        <select name="ss_code" id="ss_code" class="form-control">
+            <option value="">Select substation code</option>
+            <% for(var count = 0; count < ss_code.length; count++) { %>
+
+            <option value="<%= ss_code[count].ss_code %>"><%= ss_code[count].ss_code %></option>
+
+            <% } %>
+        </select>
+    
+        <button type="submit">Submit</button>
+</body>
+<script>
+   
+
+function _(element)
+{
+    return document.getElementById(element);
+}
+
+
+</script>
+</html>
